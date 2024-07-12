@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, Response
 from celery import Celery
 from datetime import datetime
 import os
@@ -50,16 +50,17 @@ def logs():
     try:
         with open(log_file_path, 'r') as log_file:
             logs = log_file.readlines()  # Read lines from the log file
-        formatted_logs = "<br>".join(log.strip() for log in logs)  # Join lines with <br>
-        return formatted_logs, 200  # Return as HTML
+
+        formatted_logs = ''.join(f'<div>{log.strip()}</div>' for log in logs)  # Wrap each log in a <div>
+        return Response(f"<h2>Logs:</h2>{formatted_logs}", mimetype='text/html')  # Return as HTML
     except Exception as e:
         return f'Failed to read logs: {e}', 500
 
 @celery.task
 def send_email_task(email):
     try:
-        msg = MIMEText('HNG Task 3')
-        msg['Subject'] = 'Sending email from Flask app\n I want my full marks 👁️👁️'
+        msg = MIMEText('HNG Task 3\n I want my full marks 👁️👁️')
+        msg['Subject'] = 'Sending email from Flask app'
         msg['From'] = mail
         msg['To'] = email
 
@@ -72,13 +73,19 @@ def send_email_task(email):
             server.starttls()
             server.login(smtp_user, smtp_password)
             server.send_message(msg)
+        
+        log_action(f'Sent email to: {email}')
     except Exception as e:
+        log_action(f'Failed to send email to: {email} - Error: {e}')
         print(f'Failed to send email: {e}')
 
-def log_time():
+def log_action(action):
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     with open(log_file_path, 'a') as log_file:
-        log_file.write(f'{current_time}\n')
+        log_file.write(f'{current_time} - {action}\n')
+
+def log_time():
+    log_action('Time has been logged')
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8000)

@@ -30,7 +30,6 @@ if not os.path.exists(log_file_path):
     with open(log_file_path, 'w') as log_file:
         log_file.write('')
 
-
 @app.route('/')
 def index():
     sendmail = request.args.get('sendmail')
@@ -50,10 +49,11 @@ def index():
 def logs():
     try:
         with open(log_file_path, 'r') as log_file:
-            logs = log_file.read()
-        return logs
+            logs = log_file.readlines()  # Read lines from the log file
+        formatted_logs = "<br>".join(log.strip() for log in logs)  # Join lines with <br>
+        return formatted_logs, 200  # Return as HTML
     except Exception as e:
-        return f'Failed to read logs: {e}'
+        return f'Failed to read logs: {e}', 500
 
 @celery.task
 def send_email_task(email):

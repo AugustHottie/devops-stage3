@@ -4,6 +4,12 @@
 
 This project sets up a messaging system using Flask, RabbitMQ, and Celery to handle asynchronous tasks such as sending emails and logging timestamps. It includes a simple web application that can send emails and log time based on URL parameters, exposed through ngrok for external access.
 
+### Tutorial Video
+
+Check out the tutorial video to see the setup process in action:
+
+[![Watch the tutorial](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
 ## Table of Contents
 
 - [Features](#features)

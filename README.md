@@ -48,7 +48,7 @@ Check out the tutorial video to see the setup process in action:
 
 ```bash
 git clone https://github.com/AugustHottie/task3.git
-cd messaging-system
+cd task3
 ```
 
 ### Step 2: Create a Virtual Environment
@@ -69,8 +69,9 @@ pip install -r requirements.txt
 1. **Set up your environment variables** in a `.env` file or directly in your shell:
 
    ```plaintext
-   EMAIL_USER=your_email@gmail.com
-   EMAIL_PASSWORD=your_email_password
+      MAIL_ADDRESS=your-email@gmail.com
+      APP_PASSWORD=your-google-app-password
+      LOG_FILE_PATH=/var/log/messaging_system.log
    ```
 
 2. **Ensure RabbitMQ is running**:

@@ -14,8 +14,6 @@ This project sets up a messaging system using Flask, RabbitMQ, and Celery to han
 - [Endpoints](#endpoints)
 - [Logging](#logging)
 - [Using ngrok](#using-ngrok)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 

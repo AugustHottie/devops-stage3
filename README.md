@@ -8,7 +8,7 @@ This project sets up a messaging system using Flask, RabbitMQ, and Celery to han
 
 Check out the tutorial video to see the setup process in action:
 
-[![Watch the tutorial](https://youtu.be/TVK24gbf0q4)
+[Watch the tutorial](https://youtu.be/TVK24gbf0q4)
 
 ## Table of Contents
 

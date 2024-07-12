@@ -102,6 +102,7 @@ python app.py
 | Endpoint            | Description                                 | Example Usage                     |
 |---------------------|---------------------------------------------|------------------------------------|
 | `/`                 | Main route to send emails or log time       | `http://localhost:8000/?sendmail=your_email@example.com` |
+| `/`                 | Main route to send emails or log time       | `http://localhost:8000/?talktome` |
 | `/logs`             | View the application logs                    | `http://localhost:8000/logs`     |
 
 ## Logging

@@ -47,7 +47,7 @@ Check out the tutorial video to see the setup process in action:
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/AugustHottie/task3.git
+git clone https://github.com/AugustHottie/devops-stage3.git
 cd task3
 ```
 
